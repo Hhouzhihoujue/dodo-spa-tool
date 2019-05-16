@@ -4,6 +4,8 @@ const path = require('path');
 const rimraf = require('rimraf');
 const Webpack = require('webpack');
 const createWebpackConfig = require('../lib/createWebpackConfig');
+const { log } = require('../lib/utils');
+
 // eslint-disable-next-line import/no-dynamic-require
 const { dodo: userConfig } = require(path.resolve('package.json'));
 const isProd = process.env.NODE_ENV === 'production';
@@ -14,7 +16,7 @@ rimraf.sync(path.resolve('dist'));
 
 compiler.run((err, stats) => {
   if (err) {
-    console.error(err.stack || err);
+    log.error(err.stack || err);
   }
   const info = stats.toString({
     colors: true,

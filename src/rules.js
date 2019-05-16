@@ -49,6 +49,7 @@ const base = [
 const dev = [
   {
     test: /\.css$/,
+    exclude: /node_modules/,
     use: [
       'style-loader',
       { loader: 'css-loader', options: { importLoaders: 1 } },
@@ -68,6 +69,7 @@ const dev = [
   },
   {
     test: /\.less$/,
+    exclude: /node_modules/,
     use: [
       'style-loader',
       { loader: 'css-loader', options: { importLoaders: 2 } },
@@ -88,6 +90,29 @@ const dev = [
         options: {
           javascriptEnabled: true,
         },
+      },
+    ],
+  },
+  {
+    test: /\.(scss|sass)$/,
+    exclude: /node_modules/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      {
+        loader: 'postcss-loader',
+        options: {
+          plugins: [
+            autoprefixer({
+              browsers: [
+                '> 0%',
+              ],
+            }),
+          ],
+        },
+      },
+      {
+        loader: 'sass-loader',
       },
     ],
   },
@@ -137,6 +162,29 @@ const prod = [
         options: {
           javascriptEnabled: true,
         },
+      },
+    ],
+  },
+  {
+    test: /\.(scss|sass)$/,
+    exclude: /node_modules/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      {
+        loader: 'postcss-loader',
+        options: {
+          plugins: [
+            autoprefixer({
+              browsers: [
+                '> 0%',
+              ],
+            }),
+          ],
+        },
+      },
+      {
+        loader: 'sass-loader',
       },
     ],
   },

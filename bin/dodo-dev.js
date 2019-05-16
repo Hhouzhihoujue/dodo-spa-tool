@@ -3,7 +3,8 @@
 const path = require('path');
 const Webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const createWebpackConfig = require('../src/createWebpackConfig');
+const createWebpackConfig = require('../lib/createWebpackConfig');
+const { log } = require('../lib/utils');
 // eslint-disable-next-line import/no-dynamic-require
 const { dodo: userConfig } = require(path.resolve('package.json'));
 const isProd = process.env.NODE_ENV;
@@ -25,5 +26,5 @@ const server = new WebpackDevServer(compiler, devServerOptions);
 const port = userConfig && userConfig.port ? userConfig.port : 8080;
 
 server.listen(port, '127.0.0.1', () => {
-  console.log(`Starting server on http://localhost:${port}`);
+  log.debug(`Starting server on http://localhost:${port}`);
 });

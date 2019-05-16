@@ -13,6 +13,7 @@ module.exports = {
 	},
 	"extends": "airbnb",
 	"rules": {
+		"no-console": "off",
 		"import/no-unresolved": "off",
 		"no-param-reassign": "off",
 		"no-underscore-dangle": "off",
