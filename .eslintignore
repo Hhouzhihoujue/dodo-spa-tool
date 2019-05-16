@@ -1,7 +1,6 @@
-/dist/
-
 /lib/
 
-/build/
+*.html
 
-/src/index.html
+**/dist/
+

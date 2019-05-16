@@ -1,8 +1,7 @@
-const path = require('path');
+// const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const base = template => [
   new HtmlWebpackPlugin({
@@ -13,12 +12,11 @@ const base = template => [
 
 const dev = [new webpack.HotModuleReplacementPlugin()];
 
-const prod = output => [
+const prod = () => [
   new MiniCssExtractPlugin({
-    filename: 'styles/[name].[hash:5].css',
-    chunkFilename: 'styles/[id].css',
+    filename: 'style/[name].[hash:5].css',
+    chunkFilename: 'style/[id].css',
   }),
-  new CleanWebpackPlugin(path.resolve(output)),
 ];
 
 module.exports = {

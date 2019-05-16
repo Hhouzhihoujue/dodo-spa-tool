@@ -1,0 +1,20 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ../bin/dodo-dev.js",
+    "build": "NODE_ENV=production node ../bin/dodo-build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dodo": {
+    "entry": "./src/index.jsx"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}

@@ -100,7 +100,18 @@ const prod = [
     use: [
       MiniCssExtractPlugin.loader,
       'css-loader',
-      'postcss-loader',
+      {
+        loader: 'postcss-loader',
+        options: {
+          plugins: [
+            autoprefixer({
+              browsers: [
+                '> 0%',
+              ],
+            }),
+          ],
+        },
+      },
     ],
   },
   {
@@ -109,7 +120,18 @@ const prod = [
     use: [
       MiniCssExtractPlugin.loader,
       'css-loader',
-      'postcss-loader',
+      {
+        loader: 'postcss-loader',
+        options: {
+          plugins: [
+            autoprefixer({
+              browsers: [
+                '> 0%',
+              ],
+            }),
+          ],
+        },
+      },
       {
         loader: 'less-loader',
         options: {

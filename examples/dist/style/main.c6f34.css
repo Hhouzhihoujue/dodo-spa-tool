@@ -1,0 +1,16 @@
+.home {
+  width: 200px;
+  height: 200px;
+  background: red;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
+
+.app {
+  color: red;
+}
+.app {
+  color: blue;
+}
+
