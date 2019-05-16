@@ -19,6 +19,7 @@ yarn add dodo-spa-tool -D
     "output": "dist",              // 编译输出目录
     "template": "src/index.html",  // 模版文件路径
     "port": 8080                   // 服务端口
+    "analysis": false              // 打包大小分析
   } 
 }
 ```
@@ -26,10 +27,12 @@ yarn add dodo-spa-tool -D
 3. 在项目根目录下package.json的script字段中添加如下字段
 
 ```
+// NODE_ENV 即 process.env.NODE_ENV 开发环境默认不开启优化
+// window 用户需要安装 corss-env 模块来设置 NODE_ENV 区分不同环境
 {
   script: {
-    "dev": "dodo-dev",
-    "build": "dodo-build"
+    "dev": "NODE_ENV=development dodo-dev", 
+    "build": "NODE_ENV=production dodo-build"
   }
 }
 ```
@@ -39,5 +42,4 @@ yarn add dodo-spa-tool -D
 5. 打包执行 npm run build
 
 ## TODO 
-1. 实现analyze命令
-2. 实现lint命令
+1. 实现lint命令

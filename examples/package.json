@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "dodo": {
-    "entry": "./src/index.jsx"
+    "entry": "./src/index.jsx",
+    "analysis": false
   },
   "dependencies": {
     "react": "^16.8.6",
