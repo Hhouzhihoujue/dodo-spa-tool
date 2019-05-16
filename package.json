@@ -3,7 +3,8 @@
   "version": "1.0.3",
   "description": "a spa dev tool",
   "bin": {
-    "dodo-dev": "./bin/dodo-dev.js"
+    "dodo-dev": "./bin/dodo-dev.js",
+    "dodo-build": "./bin/dodo-build.js"
   },
   "main": "index.js",
   "scripts": {
