@@ -1,6 +1,6 @@
 # dodo-spa-tool
 
-## 此工具集成常用webpack配置，便于日常开发使用
+## 此工具集成react常用webpack配置，便于日常开发使用
 ## 集中处理webpack配置所以当项目变多并且需要升级版本时可凸显其用处
 
 1. 安装
@@ -40,3 +40,4 @@ yarn add dodo-spa-tool -D
 
 ## TODO 
 1. 实现analyze命令
+2. 实现lint命令
