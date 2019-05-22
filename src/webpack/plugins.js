@@ -17,7 +17,7 @@ const prod = analysis => {
 	const plugins = [
 		new MiniCssExtractPlugin({
 			filename: 'style/[name].[hash:5].css',
-			chunkFilename: 'style/[name].[id].css'
+			chunkFilename: 'style/[id].[hash:5].css'
 		})
 	];
 	if (analysis) {
