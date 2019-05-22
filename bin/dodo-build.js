@@ -3,7 +3,7 @@
 const path = require('path');
 const rimraf = require('rimraf');
 const webpack = require('webpack');
-const createWebpackConfig = require('../lib/createWebpackConfig');
+const createWebpackConfig = require('../lib/webpack/createWebpackConfig');
 const { log } = require('../lib/utils');
 
 // eslint-disable-next-line import/no-dynamic-require
@@ -16,12 +16,12 @@ const compiler = webpack(webpackConfig);
 rimraf.sync(path.resolve('dist'));
 
 compiler.run((err, stats) => {
-  if (err) {
-    log.error(err.stack || err);
-  }
-  const info = stats.toString({
-    colors: true,
-    chunks: true,
-  });
-  console.log(info);
+	if (err) {
+		log.error(err.stack || err);
+	}
+	const info = stats.toString({
+		colors: true,
+		chunks: true
+	});
+	console.log(info);
 });

@@ -4,6 +4,7 @@ examples
 .babelrc
 .eslintignore
 .eslintrc.js
+.prettierrc.js
 .gitignore
 babel.config.js
 
