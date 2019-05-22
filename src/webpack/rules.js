@@ -13,10 +13,7 @@ const base = [
 				plugins: [
 					['@babel/plugin-proposal-decorators', { legacy: true }],
 					['@babel/plugin-proposal-class-properties', { loose: true }],
-					[
-						'import',
-						{ libraryName: 'antd', libraryDirectory: 'lib', style: 'css' }
-					],
+					['import', { libraryName: 'antd', style: 'css' }],
 					['@babel/plugin-syntax-dynamic-import'],
 					[
 						'@babel/plugin-transform-runtime',
@@ -52,12 +49,39 @@ const base = [
 	}
 ];
 
-const dev = [
+const getRule = isProd => [
 	{
 		test: /\.css$/,
 		include: /src/,
+		exclude: /src\/styles/,
 		use: [
-			'style-loader',
+			isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+			{
+				loader: 'css-loader',
+				options: {
+					importLoaders: 1,
+					modules: true,
+					camelCase: true,
+					localIdentName: '[name]__[local]--[hash:base64:5]'
+				}
+			},
+			{
+				loader: 'postcss-loader',
+				options: {
+					plugins: [
+						autoprefixer({
+							browsers: ['> 0%']
+						})
+					]
+				}
+			}
+		]
+	},
+	{
+		test: /\.css$/,
+		include: /src\/styles/,
+		use: [
+			isProd ? MiniCssExtractPlugin.loader : 'style-loader',
 			{ loader: 'css-loader', options: { importLoaders: 1 } },
 			{
 				loader: 'postcss-loader',
@@ -74,13 +98,46 @@ const dev = [
 	{
 		test: /\.css$/,
 		include: /node_modules/,
-		use: ['style-loader', 'css-loader']
+		use: [isProd ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader']
 	},
 	{
 		test: /\.less$/,
 		include: /src/,
+		exclude: /src\/styles/,
 		use: [
-			'style-loader',
+			isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+			{
+				loader: 'css-loader',
+				options: {
+					importLoaders: 2,
+					modules: true,
+					camelCase: true,
+					localIdentName: '[name]__[local]--[hash:base64:5]'
+				}
+			},
+			{
+				loader: 'postcss-loader',
+				options: {
+					plugins: [
+						autoprefixer({
+							browsers: ['> 0%']
+						})
+					]
+				}
+			},
+			{
+				loader: 'less-loader',
+				options: {
+					javascriptEnabled: true
+				}
+			}
+		]
+	},
+	{
+		test: /\.less$/,
+		include: /src\/styles/,
+		use: [
+			isProd ? MiniCssExtractPlugin.loader : 'style-loader',
 			{ loader: 'css-loader', options: { importLoaders: 2 } },
 			{
 				loader: 'postcss-loader',
@@ -103,9 +160,18 @@ const dev = [
 	{
 		test: /\.(scss|sass)$/,
 		include: /src/,
+		exclude: /src\/styles/,
 		use: [
-			'style-loader',
-			'css-loader',
+			isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+			{
+				loader: 'css-loader',
+				options: {
+					importLoaders: 2,
+					modules: true,
+					camelCase: true,
+					localIdentName: '[name]__[local]--[hash:base64:5]'
+				}
+			},
 			{
 				loader: 'postcss-loader',
 				options: {
@@ -120,63 +186,13 @@ const dev = [
 				loader: 'sass-loader'
 			}
 		]
-	}
-];
-
-const prod = [
-	{
-		test: /\.css$/,
-		include: /src/,
-		use: [
-			MiniCssExtractPlugin.loader,
-			'css-loader',
-			{
-				loader: 'postcss-loader',
-				options: {
-					plugins: [
-						autoprefixer({
-							browsers: ['> 0%']
-						})
-					]
-				}
-			}
-		]
-	},
-	{
-		test: /\.css$/,
-		include: /node_modules/,
-		use: [MiniCssExtractPlugin.loader, 'css-loader']
-	},
-	{
-		test: /\.less$/,
-		include: /src/,
-		use: [
-			MiniCssExtractPlugin.loader,
-			'css-loader',
-			{
-				loader: 'postcss-loader',
-				options: {
-					plugins: [
-						autoprefixer({
-							browsers: ['> 0%']
-						})
-					]
-				}
-			},
-			{
-				loader: 'less-loader',
-				options: {
-					javascriptEnabled: true
-				}
-			}
-		]
 	},
 	{
 		test: /\.(scss|sass)$/,
-		include: /src/,
+		include: /src\/styles/,
 		use: [
-			MiniCssExtractPlugin.loader,
-			'css-loader',
+			isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+			{ loader: 'css-loader', options: { importLoaders: 2 } },
 			{
 				loader: 'postcss-loader',
 				options: {
@@ -196,6 +212,6 @@ const prod = [
 
 module.exports = {
 	base,
-	dev,
-	prod
+	dev: getRule(),
+	prod: getRule(true)
 };

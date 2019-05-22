@@ -23,6 +23,6 @@ const server = new WebpackDevServer(compiler, devServerOptions);
 
 const port = userConfig && userConfig.port ? userConfig.port : 8080;
 
-server.listen(port, () => {
+server.listen(port, '127.0.0.1', () => {
 	log.debug(`Starting server on http://localhost:${port}`);
 });

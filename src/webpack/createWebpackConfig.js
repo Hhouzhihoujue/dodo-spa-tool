@@ -22,7 +22,7 @@ module.exports = (userConfig, isProd) => {
 		: [...basePlugins(template), ...devPlugins];
 	return {
 		mode: isProd ? 'production' : 'development',
-		entry: path.resolve(entry),
+		entry,
 		output: {
 			path: path.resolve(output),
 			filename: '[name].[hash:5].bundle.js'
