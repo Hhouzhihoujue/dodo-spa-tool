@@ -13,8 +13,13 @@ const compiler = Webpack(webpackConfig);
 const devServerOptions = Object.assign({}, webpackConfig.devServer, {
 	open: true,
 	stats: {
+		all: false,
 		colors: true,
-		chunks: true
+		chunks: true,
+		assets: true,
+		errors: true,
+		warnings: true,
+		errorDetails: true
 	},
 	hot: true
 });

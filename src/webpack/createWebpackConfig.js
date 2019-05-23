@@ -30,6 +30,15 @@ module.exports = (userConfig, isProd) => {
 		resolve: {
 			extensions: ['.js', '.jsx', '.json']
 		},
+		stats: {
+			all: false,
+			colors: true,
+			chunks: true,
+			assets: true,
+			errors: true,
+			warnings: true,
+			errorDetails: true
+		},
 		module: {
 			rules
 		},
