@@ -1,6 +1,6 @@
 {
   "name": "dodo-spa-tool",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "a spa dev tool",
   "bin": {
     "dodo-dev": "./bin/dodo-dev.js",
