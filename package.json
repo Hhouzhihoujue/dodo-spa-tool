@@ -1,6 +1,6 @@
 {
   "name": "dodo-spa-tool",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "a spa dev tool",
   "bin": {
     "dodo-dev": "./bin/dodo-dev.js",
@@ -9,7 +9,7 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "prebuild": "eslint --fix src bin --ext .js,.jsx",
+    "prebuild": "eslint --fix src bin --ext .js,.jsx,.ts,.tsx",
     "build": "babel src --out-dir lib --copy-files"
   },
   "repository": {
@@ -34,7 +34,7 @@
     "babel-plugin-import": "^1.11.0",
     "colors": "^1.3.3",
     "css-loader": "^2.1.1",
-    "eslint": "^5.16.0",
+    "eslint": "^6.0.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-import": "^2.17.2",
@@ -54,6 +54,8 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "^1.2.3",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.2",
     "url-loader": "^1.1.2",
     "webpack": "^4.31.0",
     "webpack-bundle-analyzer": "^3.3.2",

@@ -28,7 +28,7 @@ module.exports = (userConfig, isProd) => {
 			filename: '[name].[hash:5].bundle.js'
 		},
 		resolve: {
-			extensions: ['.js', '.jsx', '.json']
+			extensions: ['.js', '.jsx', '.ts', 'tsx']
 		},
 		stats: {
 			all: false,

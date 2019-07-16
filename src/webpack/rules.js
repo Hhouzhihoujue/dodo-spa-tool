@@ -3,6 +3,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const base = [
 	{
+		test: /\.tsx?$/,
+		include: /src/,
+		use: {
+			loader: 'ts-loader'
+		}
+	},
+	{
 		test: /\.jsx?$/,
 		include: /src/,
 		use: {
@@ -68,9 +75,10 @@ const getRule = isProd => [
 			{
 				loader: 'postcss-loader',
 				options: {
+					ident: 'postcss',
 					plugins: [
 						autoprefixer({
-							browsers: ['> 0%']
+							overrideBrowserslist: ['> 0%']
 						})
 					]
 				}
@@ -88,7 +96,7 @@ const getRule = isProd => [
 				options: {
 					plugins: [
 						autoprefixer({
-							browsers: ['> 0%']
+							overrideBrowserslist: ['> 0%']
 						})
 					]
 				}
@@ -120,7 +128,7 @@ const getRule = isProd => [
 				options: {
 					plugins: [
 						autoprefixer({
-							browsers: ['> 0%']
+							overrideBrowserslist: ['> 0%']
 						})
 					]
 				}
@@ -144,7 +152,7 @@ const getRule = isProd => [
 				options: {
 					plugins: [
 						autoprefixer({
-							browsers: ['> 0%']
+							overrideBrowserslist: ['> 0%']
 						})
 					]
 				}
@@ -177,7 +185,7 @@ const getRule = isProd => [
 				options: {
 					plugins: [
 						autoprefixer({
-							browsers: ['> 0%']
+							overrideBrowserslist: ['> 0%']
 						})
 					]
 				}
@@ -198,7 +206,7 @@ const getRule = isProd => [
 				options: {
 					plugins: [
 						autoprefixer({
-							browsers: ['> 0%']
+							overrideBrowserslist: ['> 0%']
 						})
 					]
 				}
